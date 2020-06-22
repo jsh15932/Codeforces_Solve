@@ -1,22 +1,20 @@
 #include<iostream>
 #include<algorithm>
 using namespace std;
- 
-int t;
-int n, x;
- 
+
+int t, n, x;
+int num;
+
 int main() {
 	cin >> t;
 	
 	while(t--) {
-		cin >> n >> x;
-		
 		int odd = 0;
 		int even = 0;
 		
-		for(int i = 1; i <= n; i++) {
-			int num;
-			
+		cin >> n >> x;
+		
+		for(int i = 0; i < n; i++) {
 			cin >> num;
 			
 			if(num % 2 == 1) {
@@ -28,36 +26,36 @@ int main() {
 			}
 		}
 		
-		if(odd != 0) {
-			if(even != 0) {
-				if(odd % 2 == 1) {
-					cout << "Yes" << '\n';
+		if(odd == 0) {
+			cout << "No" << endl;
+		}
+		
+		else {
+			if(even == 0) {
+				if(x % 2 == 1) {
+					cout << "Yes" << endl;
 				}
 				
 				else {
-					if(x <= n - 1) {
-						cout << "Yes" << '\n';
-					}
-					
-					else {
-						cout << "No" << '\n';
-					}
+					cout << "No" << endl;
 				}
 			}
 			
 			else {
-				if(x % 2 == 1 && x <= odd) {
-					cout << "Yes" << '\n';
+				if(odd % 2 == 1) {
+					cout << "Yes" << endl;
 				}
 				
 				else {
-					cout << "No" << '\n';
+					if(x == n) {
+						cout << "No" << endl;
+					}
+					
+					else {
+						cout << "Yes" << endl;
+					}
 				}
 			}
-		}
-		
-		else {
-			cout << "No" << '\n';
 		}
 	}
 }
