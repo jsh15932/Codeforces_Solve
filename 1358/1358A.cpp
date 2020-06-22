@@ -14,7 +14,7 @@ int main() {
 		
 		ans = 0;
 		
-		if((n * m) & 1) {
+		if((n * m) % 2 == 1) {
 			ans = (n * m) / 2 + 1;
 		}
 		
