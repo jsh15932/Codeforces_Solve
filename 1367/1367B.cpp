@@ -11,8 +11,10 @@ int main() {
 	while(t--) {
 		cin >> n;
 		
+		int k = 0;
+		
 		vector <int> vc(n);
-		int cnt[2] = {0, 0};
+		int cnt[2] = {0, };
 		
 		for(int i = 0; i < vc.size(); i++) {
 			cin >> vc[i];
@@ -22,19 +24,17 @@ int main() {
 		}
 		
 		if(cnt[0] != (n + 1) / 2 || cnt[1] != n / 2) {
-			cout << -1 << '\n';
+			cout << -1 << endl;
 		}
 		
 		else {
-			int count = 0;
-		
 			for(int i = 0; i < n; i++) {
 				if(vc[i] != i % 2) {
-					count++;
+					k++;
 				}
 			}
 			
-			cout << count / 2 << '\n';
+			cout << k / 2 << endl;
 		}
 	}
 }
