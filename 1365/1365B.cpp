@@ -11,37 +11,37 @@ int main() {
 	while(t--) {
 		cin >> n;
 		
-		bool chk[2] = {false, false};
+		bool chk[2] = {false, };
 		
-		for(int i = 1; i <= n; i++) {
+		for(int i = 0; i < n; i++) {
 			cin >> d[i];
 		}
 		
-		for(int i = 1; i <= n; i++) {
+		for(int i = 0; i < n; i++) {
 			cin >> num;
 			
 			chk[num] = true;
 		}
 		
 		if(chk[0] && chk[1]) {
-			cout << "Yes\n";
+			cout << "Yes" << endl;
 		}
 		
 		else {
-			bool c = false;
+			bool ans = true;
 			
-			for(int i = 1; i + 1 <= n; i++) {
+			for(int i = 0; i + 1 < n; i++) {
 				if(d[i] > d[i + 1]) {
-					c = true;
+					ans = false;
 				}
 			}
 			
-			if(c) {
-				cout << "No\n";
+			if(!ans) {
+				cout << "No" << endl;
 			}
 			
 			else {
-				cout << "Yes\n";
+				cout << "Yes" << endl;
 			}
 		}
 	}
