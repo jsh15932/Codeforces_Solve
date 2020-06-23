@@ -2,37 +2,31 @@
 #include<algorithm>
 using namespace std;
 
-int n;
+int n, num;
 int a[200001];
 int b[200001];
 int p[200001];
-int cnt[200001];
 
 int main() {
-	scanf("%d", &n);
-	
-	for(int i = 0; i < n; i++) {
-		scanf("%d", a + i);
-		p[a[i]] = i;
-	}
-	
-	for(int i = 0; i < n; i++) {
-		scanf("%d", b + i);
-		
-		int tmp = i - p[b[i]];
-		
-		if(tmp < 0) {
-			tmp += n;
-		}
-		
-		cnt[tmp]++;
-	}
+	cin >> n;
 	
 	int ans = 0;
 	
 	for(int i = 0; i < n; i++) {
-		ans = max(ans, cnt[i]);
+		cin >> a[i];
+		
+		b[a[i]] = i;
 	}
 	
-	printf("%d", ans);
+	for(int i = 0; i < n; i++) {
+		cin >> num;
+		
+		p[(i + n - b[num]) % n]++;
+	}
+	
+	for(int i = 0; i < n; i++) {
+		ans = max(ans, p[i]);
+	}
+	
+	cout << ans;
 }
