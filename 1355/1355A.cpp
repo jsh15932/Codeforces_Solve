@@ -1,10 +1,8 @@
-#include<iostream>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 
 int t;
 long long int a, b;
-bool chk;
 
 int main() {
 	cin >> t;
@@ -12,11 +10,11 @@ int main() {
 	while(t--) {
 		cin >> a >> b;
 		
+		long long int k = a;
 		long long int x;
 		long long int y;
-		long long int k;
 		
-		chk = true;
+		bool chk = true;
 		
 		for(int i = 1; i < b; i++) {
 			x = 10;
@@ -24,8 +22,8 @@ int main() {
 			k = a;
 			
 			while(k) {
-				x = min(x, k % 10);
-				y = max(y, k % 10);
+				x = min(k % 10, x);
+				y = max(k % 10, y);
 				
 				k /= 10;
 				
@@ -35,7 +33,13 @@ int main() {
 				}
 			}
 			
-			a += x * y;
+			if(!chk) {
+				break;
+			}
+			
+			else {
+				a += x * y;
+			}
 		}
 		
 		cout << a << endl;
