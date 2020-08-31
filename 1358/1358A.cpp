@@ -1,10 +1,8 @@
-#include<iostream>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 
 int t;
-int n, m;
-int ans;
+int n, m, ans;
 
 int main() {
 	cin >> t;
@@ -12,14 +10,18 @@ int main() {
 	while(t--) {
 		cin >> n >> m;
 		
-		ans = 0;
-		
-		if((n * m) % 2 == 1) {
-			ans = (n * m) / 2 + 1;
+		if(n % 2 == 0) {
+			ans = (n / 2) * m;
 		}
 		
 		else {
-			ans = (n * m) / 2;
+			if(m % 2 == 0) {
+				ans = (n / 2) * m + (m / 2);
+			}
+			
+			else {
+				ans = (n / 2) * m + ((m + 1) / 2);
+			}
 		}
 		
 		cout << ans << endl;
