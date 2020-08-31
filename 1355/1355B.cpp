@@ -1,53 +1,39 @@
-#include<iostream>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 
 int t, n;
-int d[200001];
-int ans, cur;
 
 int main() {
 	cin >> t;
 	
 	while(t--) {
+		int Max_N = 0;
+		
 		cin >> n;
 		
-		cur = 0;
-		ans = 0;
+		int d[n + 1] = {0, };
+		int a[n + 1];
 		
-		for(int i = 0; i < n; i++) {
-			cin >> d[i];
+		for(int i = 1; i <= n; i++) {
+			cin >> a[i];
 		}
 		
-		sort(d, d + n);
+		sort(a + 1, a + n + 1);
 		
-		while(1) {
-			while(cur + d[cur] < n) {
-				if(d[cur] < d[cur + d[cur] - 1]) {
-					d[cur] += d[cur + d[cur] - 1];
-				}
-				
-				else {
-					break;
-				}
+		for(int i = 1; i <= n; i++) {
+			if(i < a[i]) {
+				d[i] = 0;
 			}
 			
-			if(cur + d[cur] >= n) {
-				if(cur + d[cur] == n) {
-					if(d[cur] >= d[cur + d[cur] - 1]) {
-						ans += 1;
-					}
-				}
-				
-				break;
-			}
-				
 			else {
-				ans += 1;
-				cur += d[cur];
+				d[i] = d[i - a[i]] + 1;
 			}
 		}
 		
-		cout << ans << endl;
+		for(int i = 1; i <= n; i++) {
+			Max_N = max(d[i], Max_N);
+		}
+		
+		cout << Max_N << endl;
 	}
 }
